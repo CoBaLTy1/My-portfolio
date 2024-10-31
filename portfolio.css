@@ -156,16 +156,7 @@ html, body {
 
 
 
-    /* Set background to fixed position and behind all other content */
-    .background {
-        position: fixed;
-        width: 100vw;
-        height: 100vh;
-        top: 0;
-        left: 0;
-        z-index: -1; /* Ensure it's behind other elements */
-        overflow: hidden;
-    }
+
     
     .background{
         height: 100%;
@@ -181,6 +172,7 @@ html, body {
         linear-gradient(59deg, rgba(224, 224, 224, 0.05) 0%, rgba(224, 224, 224, 0.05) 12.5%, rgba(97, 97, 97, 0.05) 12.5%, rgba(97, 97, 97, 0.05) 25%, rgba(143, 143, 143, 0.05) 25%, rgba(143, 143, 143, 0.05) 37.5%, rgba(110, 110, 110, 0.05) 37.5%, rgba(110, 110, 110, 0.05) 50%, rgba(34, 34, 34, 0.05) 50%, rgba(34, 34, 34, 0.05) 62.5%, rgba(155, 155, 155, 0.05) 62.5%, rgba(155, 155, 155, 0.05) 75%, rgba(249, 249, 249, 0.05) 75%, rgba(249, 249, 249, 0.05) 87.5%, rgba(179, 179, 179, 0.05) 87.5%, rgba(179, 179, 179, 0.05) 100%),
         linear-gradient(241deg, rgba(58, 58, 58, 0.05) 0%, rgba(58, 58, 58, 0.05) 25%, rgba(124, 124, 124, 0.05) 25%, rgba(124, 124, 124, 0.05) 50%, rgba(254, 254, 254, 0.05) 50%, rgba(254, 254, 254, 0.05) 75%, rgba(52, 52, 52, 0.05) 75%, rgba(52, 52, 52, 0.05) 100%), 
         linear-gradient(90deg, #ffffff, #ffffff);
+        z-index: -5;
         
 
     }
@@ -353,6 +345,130 @@ html, body {
         justify-self: center;
         font-size: 2em;
         font-family: roboto;
+    }
+}
+
+
+
+@media (min-width: 600px) {
+
+
+
+    html, body {
+        overflow-x: hidden;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(20, 5vw);
+        grid-template-rows: repeat(20, 5vh);
+        height: 100%;
+    }
+
+
+
+
+    .about-me,
+    .about-me-text,
+    .email,
+    .discord,
+    .fa-solid.fa-phone,
+    .sidebar,
+    .swiper,
+    .explore,
+    .p1,
+    .c1,
+    .placeholder1,
+    .p2,
+    .c2,
+    .placeholder2,
+    .p3,
+    .c3,
+    .placeholder3,
+    .circle {
+        display: none;
+    }
+
+
+    .me {
+        position: absolute;
+        height: 50%;
+        width: 35%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        right: -70vw;
+        border: 3px solid black;
+        border-radius: 10%;
+        animation: moveleft .5s forwards ease;
+    }
+
+.background {
+    z-index: -3;
+    height: 100%;
+    width: 100%;
+    grid-column: 1/21;
+    grid-row: 1/21;
+    background-image: linear-gradient(158deg, rgba(84, 84, 84, 0.05) 0%, rgba(84, 84, 84, 0.05) 20%, rgba(219, 219, 219, 0.05) 20%, rgba(219, 219, 219, 0.05) 40%, rgba(54, 54, 54, 0.05) 40%, rgba(54, 54, 54, 0.05) 60%, rgba(99, 99, 99, 0.05) 60%, rgba(99, 99, 99, 0.05) 80%, rgba(92, 92, 92, 0.05) 80%, rgba(92, 92, 92, 0.05) 100%),
+    linear-gradient(45deg, rgba(221, 221, 221, 0.05) 0%, rgba(221, 221, 221, 0.05) 14.286%, rgba(8, 8, 8, 0.05) 14.286%, rgba(8, 8, 8, 0.05) 28.572%, rgba(52, 52, 52, 0.05) 28.572%, rgba(52, 52, 52, 0.05) 42.858%, rgba(234, 234, 234, 0.05) 42.858%, rgba(234, 234, 234, 0.05) 57.144%, rgba(81, 81, 81, 0.05) 57.144%, rgba(81, 81, 81, 0.05) 71.42999999999999%, rgba(239, 239, 239, 0.05) 71.43%, rgba(239, 239, 239, 0.05) 85.71600000000001%, rgba(187, 187, 187, 0.05) 85.716%, rgba(187, 187, 187, 0.05) 100.002%),
+    linear-gradient(109deg, rgba(33, 33, 33, 0.05) 0%, rgba(33, 33, 33, 0.05) 12.5%, rgba(147, 147, 147, 0.05) 12.5%, rgba(147, 147, 147, 0.05) 25%, rgba(131, 131, 131, 0.05) 25%, rgba(131, 131, 131, 0.05) 37.5%, rgba(151, 151, 151, 0.05) 37.5%, rgba(151, 151, 151, 0.05) 50%, rgba(211, 211, 211, 0.05) 50%, rgba(211, 211, 211, 0.05) 62.5%, rgba(39, 39, 39, 0.05) 62.5%, rgba(39, 39, 39, 0.05) 75%, rgba(55, 55, 55, 0.05) 75%, rgba(55, 55, 55, 0.05) 87.5%, rgba(82, 82, 82, 0.05) 87.5%, rgba(82, 82, 82, 0.05) 100%),
+    linear-gradient(348deg, rgba(42, 42, 42, 0.05) 0%, rgba(42, 42, 42, 0.05) 20%, rgba(8, 8, 8, 0.05) 20%, rgba(8, 8, 8, 0.05) 40%, rgba(242, 242, 242, 0.05) 40%, rgba(242, 242, 242, 0.05) 60%, rgba(42, 42, 42, 0.05) 60%, rgba(42, 42, 42, 0.05) 80%, rgba(80, 80, 80, 0.05) 80%, rgba(80, 80, 80, 0.05) 100%),
+    linear-gradient(120deg, rgba(106, 106, 106, 0.05) 0%, rgba(106, 106, 106, 0.05) 14.286%, rgba(67, 67, 67, 0.05) 14.286%, rgba(67, 67, 67, 0.05) 28.572%, rgba(134, 134, 134, 0.05) 28.572%, rgba(134, 134, 134, 0.05) 42.858%, rgba(19, 19, 19, 0.05) 42.858%, rgba(19, 19, 19, 0.05) 57.144%, rgba(101, 101, 101, 0.05) 57.144%, rgba(101, 101, 101, 0.05) 71.42999999999999%, rgba(205, 205, 205, 0.05) 71.43%, rgba(205, 205, 205, 0.05) 85.71600000000001%, rgba(53, 53, 53, 0.05) 85.716%, rgba(53, 53, 53, 0.05) 100.002%),
+    linear-gradient(45deg, rgba(214, 214, 214, 0.05) 0%, rgba(214, 214, 214, 0.05) 16.667%, rgba(255, 255, 255, 0.05) 16.667%, rgba(255, 255, 255, 0.05) 33.334%, rgba(250, 250, 250, 0.05) 33.334%, rgba(250, 250, 250, 0.05) 50.001000000000005%, rgba(231, 231, 231, 0.05) 50.001%, rgba(231, 231, 231, 0.05) 66.668%, rgba(241, 241, 241, 0.05) 66.668%, rgba(241, 241, 241, 0.05) 83.33500000000001%, rgba(31, 31, 31, 0.05) 83.335%, rgba(31, 31, 31, 0.05) 100.002%),
+    linear-gradient(59deg, rgba(224, 224, 224, 0.05) 0%, rgba(224, 224, 224, 0.05) 12.5%, rgba(97, 97, 97, 0.05) 12.5%, rgba(97, 97, 97, 0.05) 25%, rgba(143, 143, 143, 0.05) 25%, rgba(143, 143, 143, 0.05) 37.5%, rgba(110, 110, 110, 0.05) 37.5%, rgba(110, 110, 110, 0.05) 50%, rgba(34, 34, 34, 0.05) 50%, rgba(34, 34, 34, 0.05) 62.5%, rgba(155, 155, 155, 0.05) 62.5%, rgba(155, 155, 155, 0.05) 75%, rgba(249, 249, 249, 0.05) 75%, rgba(249, 249, 249, 0.05) 87.5%, rgba(179, 179, 179, 0.05) 87.5%, rgba(179, 179, 179, 0.05) 100%),
+    linear-gradient(241deg, rgba(58, 58, 58, 0.05) 0%, rgba(58, 58, 58, 0.05) 25%, rgba(124, 124, 124, 0.05) 25%, rgba(124, 124, 124, 0.05) 50%, rgba(254, 254, 254, 0.05) 50%, rgba(254, 254, 254, 0.05) 75%, rgba(52, 52, 52, 0.05) 75%, rgba(52, 52, 52, 0.05) 100%), 
+    linear-gradient(90deg, #ffffff, #ffffff);
+    z-index: -5;
+}
+
+
+.hello-there {
+    grid-column: 2/4;
+    grid-row: 6/8;
+    font-family: roboto;
+    font-size: 4em;
+    white-space: nowrap;
+    animation: moverright .4s forwards;
+}
+
+
+.heading {
+    grid-column: 2/8;
+    grid-row: 8/16;
+    font-family: roboto;
+    font-size: 5.11em;
+}
+
+
+.high {
+    color: blue;
+}
+
+}
+
+
+
+
+
+
+
+
+@keyframes moverright {
+    0% {
+        transform: translateX(-200%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+@keyframes moveleft {
+    0% {
+        transform: translateX(0) translateY(-50%);
+    }
+
+    100% {
+        transform: translateX(-75vw) translateY(-50%);
     }
 }
 
