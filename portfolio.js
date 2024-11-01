@@ -1,4 +1,3 @@
-// Variable to keep track of the current animation state
 let currentAnimation = 'mover';
 let isAnimating = false; // Flag to track if an animation is in progress
 
