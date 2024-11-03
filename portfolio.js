@@ -54,26 +54,28 @@ function updateBackgroundOpacity() {
 
 // Add event listener for scroll
 window.addEventListener('scroll', updateBackgroundOpacity);
-
-
-const elementsToObserve = document.querySelectorAll('.downback, .proj1, .proj2, .proj3, .proj4, .proj5, .proj6, .exploration');
+const elementsToObserve = document.querySelectorAll('.proj1, .proj2, .proj3, .proj4, .proj5, .proj6, .exploration');
 
 // Create an Intersection Observer
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            // At least 50% of the element is visible
-            console.log(`Element ${entry.target.className} is at least 50% visible`);
-
-            // Add a 'visible' class to trigger the scaling effect
+            // When the element enters the viewport, scale up to 1
+            console.log(`Element: ${entry.target.className}, Is Intersecting: ${entry.isIntersecting}`);
             entry.target.classList.add('visible');
+            entry.target.style.transition = 'transform 0.5s ease';
+            entry.target.style.transform = 'scale(1)';
         } else {
-            // Remove the 'visible' class when the element is out of view
+            // When the element exits the viewport, remove the visible class
+            console.log(`Element: ${entry.target.className}, Has Left the Viewport`);
             entry.target.classList.remove('visible');
+            entry.target.style.transition = 'transform 0.5s ease';
+            entry.target.style.transform = 'scale(0.9)'; // Scale down to 0.9 for a smoother transition
         }
     });
 }, {
-    threshold: 0.5 // Trigger when 50% of the element is visible
+    threshold: [0], // Trigger when any part of the element is visible
+    rootMargin: '-10% 0px 0px 0px' // Same rootMargin as before
 });
 
 // Observe each element
@@ -81,13 +83,58 @@ elementsToObserve.forEach(element => {
     observer.observe(element);
 });
 
+// Define limits at the top of your script
+let limits = 15.0;
 
+// Event listener for multiple project elements
+document.addEventListener('DOMContentLoaded', () => {
+    // Select all project elements
+    const projectElements = document.querySelectorAll('.proj1, .proj2, .proj3, .proj4, .proj5, .proj6');
 
+    projectElements.forEach(proj => {
+        // Mouse move event
+        proj.addEventListener('mousemove', function (e) {
+            const rect = e.target.getBoundingClientRect();
+            const x = e.clientX - rect.left; // x position within the element.
+            const y = e.clientY - rect.top; // y position within the element.
+            const offsetX = x / rect.width;
+            const offsetY = y / rect.height;
 
+            const rotateY = (offsetX) * (limits * 2) - limits;
+            const rotateX = (offsetY) * (limits * 2) - limits;
 
+            const shadowOffsetX = (offsetX) * 32 - 16;
+            const shadowOffsetY = (offsetY) * 32 - 16;
 
+            proj.style.boxShadow = `
+                ${-shadowOffsetX / 6}px ${-shadowOffsetY / 6}px 3px rgba(255, 255, 255, 0.051),
+                ${-shadowOffsetX / 3}px ${-shadowOffsetY / 3}px 7.2px rgba(255, 255, 255, 0.073),
+                ${-shadowOffsetX / 2}px ${-shadowOffsetY / 2}px 13.6px rgba(255, 255, 255, 0.09),
+                ${-shadowOffsetX * (2 / 3)}px ${-shadowOffsetY * (2 / 3)}px 24.3px rgba(255, 255, 255, 0.107),
+                ${-shadowOffsetX * (5 / 6)}px ${-shadowOffsetY * (5 / 6)}px 45.5px rgba(255, 255, 255, 0.129),
+                ${-shadowOffsetX}px ${-shadowOffsetY}px 109px rgba(255, 255, 255, 0.18)`;
+            
+            proj.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
 
+            // Define glare variable within the event
+            const glare = proj.querySelector('.glare');
+            if (glare) {
+                const glarePos = rotateX + rotateY + 90;
+                glare.style.left = glarePos + "%";
+            }
+        });
 
-
-
-
+        // Mouse leave event
+        proj.addEventListener('mouseleave', function () {
+            // Reset the box shadow and transformation for all project elements
+            projectElements.forEach(element => {
+                element.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)"; // Reset transformation
+                element.style.boxShadow = 'none'; // Reset the box shadow
+                const glare = element.querySelector('.glare'); // Ensure glare is defined here too
+                if (glare) {
+                    glare.style.left = "100%"; // Reset glare position
+                }
+            });
+        });
+    });
+});
