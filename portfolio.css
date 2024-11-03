@@ -355,6 +355,9 @@ html, body {
 
 
 
+  
+
+
 @media (min-width: 600px) {
 
 
@@ -566,9 +569,7 @@ html, body {
 
 /* Hover effects for circles */
 
-::-webkit-scrollbar {
 
-}
 
 body {
     scrollbar-width: none; /* "auto" or "thin" are also options */
@@ -579,7 +580,7 @@ body {
     background-color: rgb(49, 49, 49);
     height: 10vh;
     width: 100vw;
-    box-shadow: 0px 2px 5px 5px rgb(0, 0, 0);
+    box-shadow: 0px 0px 5px 5px rgb(0, 0, 0);
     z-index: 10;
     display: grid;
     grid-template-columns: repeat(20, 5%);
@@ -658,12 +659,13 @@ body {
     border-radius: 10%;
     border: 5px solid blue;
     opacity: 0;
+    transition: scale 100ms;
 }
 
 .proj2 {
     grid-column: 9/13;
     grid-row: 4/8; /* Moved down by one row */
-    background-color: white;
+    background-color: white !important;
     border-radius: 10%;
     border: 5px solid blue;
     opacity: 0;
@@ -716,14 +718,28 @@ body {
 
 .downback, .proj1, .proj2, .proj3, .proj4, .proj5, .proj6, .exploration {
     opacity: 0;        /* Start as invisible */
-    transform: scale(0.8); /* Start scaled down */
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition for both opacity and scale */
+    transform: scale(0.9); /* Start scaled down */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition for both opacity and scale */
 }
 
 .visible {
     opacity: 1;        /* Fully visible */
     transform: scale(1); /* Scale to original size */
 }
+
+.proj1, .proj2, .proj3, .proj4, .proj5, .proj6 {
+
+    background-color: #ffffff;
+    color: white;
+
+
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), 
+                box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+}
+
+
+
 
 
 }
