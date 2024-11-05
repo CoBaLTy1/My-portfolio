@@ -656,6 +656,7 @@ body {
 }
 
 .abouter {
+    margin-left: -6%;
     grid-column: 5/8;
     grid-row: 1/3;
     justify-self: center;
@@ -670,8 +671,8 @@ body {
 }
 
 .pro {
-    margin-right: 18%;
-    grid-column: 2/7;
+    margin-left: 4%;
+    grid-column: 3/5;
     grid-row: 1/3;
     justify-self: center;
     align-self: center;
@@ -898,9 +899,15 @@ body {
     filter: blur(2px);
     transition: transform 0.3s ease;
     border: 4px solid blue;
-    animation: hovering 1.3s ease-in-out infinite; /* Smooth, continuous motion */
     transform: scale(.9);
     z-index: 5;
+    opacity: 0;
+}
+
+.kvadrat1.visible {
+    transform: scale(1);
+    opacity: 1;
+    animation: hovering 1.3s ease-in-out infinite; /* Smooth, continuous motion */
 }
 
 
