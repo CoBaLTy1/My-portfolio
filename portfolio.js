@@ -151,6 +151,19 @@ if (window.matchMedia("(min-width: 769px)").matches) {
         });
     });
     
+
+        // Initialize Vanilla Tilt with the reverse option
+        VanillaTilt.init(document.querySelector(".me"), {
+            max: 25,          // Maximum tilt angle
+            speed: 400,       // Speed of the transition
+            reverse: true,    // Reverse the tilt direction
+            glare: true,      // Adds a subtle glare effect
+            "max-glare": 0.3  // Controls the intensity of the glare
+        });
+
+
+
+        
     
     document.addEventListener('DOMContentLoaded', () => {
         const kvadratElements = document.querySelectorAll('.kvadrat1, .kvadrat2, .kvadrat3');
@@ -159,13 +172,19 @@ if (window.matchMedia("(min-width: 769px)").matches) {
         const kvadratObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // When the element enters the viewport, set to visible
+                    // Add the visible class when the element enters the viewport
                     console.log(`Element: ${entry.target.className}, Is Intersecting: ${entry.isIntersecting}`);
-                    entry.target.classList.add('visible'); // Add the visible class
+                    entry.target.classList.add('visible');
+                    
+                    // Wait 0.31 seconds, then toggle classes
+                    setTimeout(() => {
+                        entry.target.classList.remove('visible');
+                        entry.target.classList.add('visible1');
+                    }, 310); // 310 milliseconds for 0.31 seconds
                 } else {
-                    // When the element exits the viewport, remove the visible class
+                    // Remove both classes when the element exits the viewport
                     console.log(`Element: ${entry.target.className}, Has Left the Viewport`);
-                    entry.target.classList.remove('visible'); // Remove the visible class
+                    entry.target.classList.remove('visible', 'visible1');
                 }
             });
         }, {
@@ -178,6 +197,7 @@ if (window.matchMedia("(min-width: 769px)").matches) {
             kvadratObserver.observe(element);
         });
     });
+    
     
     
     
